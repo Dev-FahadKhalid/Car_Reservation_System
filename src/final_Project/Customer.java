@@ -20,7 +20,7 @@ public class Customer {
 		this.setaddress();
 	}
 	private  void setid() {
-		System.out.println("\n Enter Your ID integer: ");
+		System.out.println("\n Enter Your ID: ");
 		this.id = sc.nextInt();
 		sc.nextLine();
 	}
