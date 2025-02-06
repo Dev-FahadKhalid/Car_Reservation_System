@@ -1,22 +1,22 @@
 package final_Project;
 
+import java.sql.Connection;
+
 public class Reservation {
 
-	public void reservation() {
+
+	public void reservation(Connection con) {
 
 		Manager man=new Manager();
-		man.managerInfo();
+		     man.managerInfo();
 		Customer cus = new Customer();
-		cus.setInfoCustomer();
-		cus.getInfoCustomer();
-
-		if (cus.checkLicense()) {
-		    man.cardetails();
-			man.car_reservation();
+		     cus.addCustomer(con);
+		     man.cardetails();
+			 man.car_reservation();
 			System.out.println("Processed Succeed.");
-			} else {
-				System.out.println("BadLuck process terminated.");
-			}
+			
 	}//func
+
+	
 
 }//Class

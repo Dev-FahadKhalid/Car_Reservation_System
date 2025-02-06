@@ -212,5 +212,56 @@ public class Car {
 			}
 		}
 	}
+	public void deleteCar() {
+	    File carfile = new File("C:\\Users\\PMLS\\Desktop\\Cardetails.txt");
+	    if (!carfile.exists()) {
+	        System.out.println("The file does not exist. Please add cars first.");
+	        return;
+	    }
+
+	    //this.getInfoCar(); 
+
+	    System.out.print("\nEnter the ID of the car you want to delete: ");
+	    int deleteId = sc.nextInt();
+	    sc.nextLine();
+
+	    boolean carFound = false;
+
+	    StringBuilder updatedContent = new StringBuilder();
+
+	    try (BufferedReader reader = new BufferedReader(new FileReader(carfile))) {
+	        String line;
+	        while ((line = reader.readLine()) != null) {
+	            String[] parts = line.split(",");
+	            if (parts.length == 6) {
+	                int id = Integer.parseInt(parts[0]);
+
+	                if (id == deleteId) {
+	                    carFound = true;
+	                    System.out.println("\nCar with ID " + deleteId + " has been deleted.");
+	                    continue; // Skip writing this car to the updated content
+	                }
+
+	                updatedContent.append(line).append("\n");
+	            }
+	        }
+	    } catch (IOException e) {
+	        System.out.println("An error occurred while reading the file:");
+	        e.printStackTrace();
+	        return;
+	    }
+
+	    if (!carFound) {
+	        System.out.println("\nCar with ID " + deleteId + " not found.");
+	    } else {
+	        try (BufferedWriter writer = new BufferedWriter(new FileWriter(carfile))) {
+	            writer.write(updatedContent.toString());
+	        } catch (IOException e) {
+	            System.out.println("An error occurred while updating the file:");
+	            e.printStackTrace();
+	        }
+	    }
+	}
+
 
 }

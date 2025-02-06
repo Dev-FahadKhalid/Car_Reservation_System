@@ -5,7 +5,8 @@ public class Manager  {
 	String name;
 	String email;
 	String phone_No;
-	 Car c=new Car();
+	 Car car=new Car();
+	// Customer cus=new Customer();
 
 	public Manager() {
 		this.name = " Fahad Khalid";
@@ -20,14 +21,20 @@ public class Manager  {
 	}	
    public void cardetails() {
 	   //Composition
-	   c.getInfoCar();
+	   car.getInfoCar();
    }
    public void car_reservation() {
 	   //Composition
-	   c.reserveCar();
+	   car.reserveCar();
    }
    public void addcar() {
 	 //Composition
-	   c.addCar();
+	   car.addCar();
    }
+   public void delcar() {
+		 //Composition
+		   car.deleteCar();
+	   }
+  
+ 
 }
